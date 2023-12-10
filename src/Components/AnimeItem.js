@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
+import Navbar from './MenuBar'
 
 function AnimeItem() {
     const {id} = useParams()
@@ -41,7 +42,7 @@ function AnimeItem() {
     }, [])
 
     return (
-        <AnimeItemStyled>
+        <><Navbar /><AnimeItemStyled>
             <h1>{title}</h1>
             <div className="details">
                 <div className="detail">
@@ -66,28 +67,27 @@ function AnimeItem() {
                     {showMore ? synopsis : synopsis?.substring(0, 450) + '...'}
                     <button onClick={() => {
                         setShowMore(!showMore)
-                    }}>{showMore ? 'Show Less': 'Read More'}</button>
+                    } }>{showMore ? 'Show Less' : 'Read More'}</button>
                 </p>
             </div>
             <h3 className="title">Trailer</h3>
             <div className="trailer-con">
-                {trailer?.embed_url ? 
-                    <iframe 
-                        src={trailer?.embed_url} 
+                {trailer?.embed_url ?
+                    <iframe
+                        src={trailer?.embed_url}
                         title="Inline Frame Example"
                         width="800"
                         height="450"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen>
                     </iframe> :
-                    <h3>Trailer no disponible</h3>
-                }
+                    <h3>Trailer no disponible</h3>}
             </div>
             <h3 className="title">Personajes</h3>
             <div className="characters">
                 {characters?.map((character, index) => {
-                    const {role} = character
-                    const {images, name, mal_id} = character.character
+                    const { role } = character
+                    const { images, name, mal_id } = character.character
                     return <Link to={`/character/${mal_id}`} key={index}>
                         <div className="character">
                             <img src={images?.jpg.image_url} alt="" />
@@ -97,7 +97,7 @@ function AnimeItem() {
                     </Link>
                 })}
             </div>
-        </AnimeItemStyled >
+        </AnimeItemStyled></>
     )
 }
 

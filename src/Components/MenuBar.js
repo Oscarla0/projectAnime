@@ -1,21 +1,21 @@
 import React from 'react';
 import { Menu } from 'antd';
-import { HomeOutlined, AppstoreOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
+import { HomeOutlined } from '@ant-design/icons';
+import { useGlobalContext } from '../context/global';
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ setRendered }) => {
+  const { getPopularAnime } = useGlobalContext();
+
   return (
-    <Menu mode="horizontal" theme="dark" style={{ background: 'white' , color:'black'}}>
-      <Menu.Item key="home" icon={<HomeOutlined />}>
-        Home
-      </Menu.Item>
-      <Menu.Item key="products" icon={<AppstoreOutlined />}>
-        Products
-      </Menu.Item>
-      <Menu.Item key="about" icon={<UserOutlined />}>
-        About Us
-      </Menu.Item>
-      <Menu.Item key="contact" icon={<MailOutlined />}>
-        Contact
+    <Menu mode="horizontal" theme="dark" style={{ background: 'white', color: 'black' }}>
+      <Menu.Item key="popular" icon={<HomeOutlined />} onClick={() => {
+        if (typeof setRendered === 'function') { // Check if setRendered is a function
+          setRendered('popular');
+          getPopularAnime();
+        }
+      }}>
+        <Link to="/">Home</Link>
       </Menu.Item>
     </Menu>
   );

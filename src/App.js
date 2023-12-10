@@ -8,7 +8,7 @@ function App() {
   
   return (
     <BrowserRouter>
-      <Navbar/>
+
       <Routes>
         <Route path="/" element={<Homepage />}/>
         <Route path="/anime/:id" element={<AnimeItem />} />
@@ -19,4 +19,3 @@ function App() {
 }
 
 export default App;
-

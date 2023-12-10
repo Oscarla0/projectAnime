@@ -3,6 +3,7 @@ import { useGlobalContext } from '../context/global'
 import Popular from './Popular'
 import styled from 'styled-components'
 import Upcoming from './Upcoming'
+import Navbar from "./MenuBar";
 import Airing from './Airing'
 import { Button, Input } from 'antd';
 import { FireOutlined, PlayCircleOutlined, PlusOutlined } from '@ant-design/icons';
@@ -34,6 +35,7 @@ function Homepage() {
 
     return (
         <HomepageStyled>
+             <Navbar setRendered={setRendered} />
             <header>
                 <div className="logo">
                     <h1>
