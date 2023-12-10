@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useGlobalContext } from '../context/global'
 import Popular from './Popular'
 import styled from 'styled-components'
@@ -8,7 +8,6 @@ import { Button, Input } from 'antd';
 import { FireOutlined, PlayCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 function Homepage() {
-
     const { handleSubmit,
         search,
         searchAnime,

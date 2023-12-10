@@ -1,27 +1,24 @@
-import React, { useState } from 'react';
-import Homepage from './Homepage';
-import { Button, Space, DatePicker, version } from 'antd';
+import React from 'react';
+import { Menu } from 'antd';
+import { HomeOutlined, AppstoreOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
 
-
-const MenuBar = () => {
-  const [selectedOption, setSelectedOption] = useState('home');
-
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-  };
-
+const Navbar = () => {
   return (
-    <div>
-        
-                
-      <ul>
-        <Button path="/">HOLA</Button>
-        <li onClick={() => handleOptionClick('home')}>Home</li>
-        <li onClick={() => handleOptionClick('about')}>About</li>
-        <li onClick={() => handleOptionClick('contact')}>Contact</li>
-      </ul>
-    </div>
+    <Menu mode="horizontal" theme="dark" style={{ background: 'white' , color:'black'}}>
+      <Menu.Item key="home" icon={<HomeOutlined />}>
+        Home
+      </Menu.Item>
+      <Menu.Item key="products" icon={<AppstoreOutlined />}>
+        Products
+      </Menu.Item>
+      <Menu.Item key="about" icon={<UserOutlined />}>
+        About Us
+      </Menu.Item>
+      <Menu.Item key="contact" icon={<MailOutlined />}>
+        Contact
+      </Menu.Item>
+    </Menu>
   );
 };
 
-export default MenuBar;
+export default Navbar;
